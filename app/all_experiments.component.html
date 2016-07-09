@@ -1,9 +1,0 @@
-<h1>Experiments</h1><br>
-<h2><a>Create new experiment</a></h2><br>
-<h2>All experiments</h2>
-<nav>
-	<li *ngFor="let experiment of experiments" (click)="onSelect(experiment)">
-		<span class="badge">{{ experiment.id }}</span>
-		<a>{{ experiment.name }}</a>
-	</li>
-</nav>
