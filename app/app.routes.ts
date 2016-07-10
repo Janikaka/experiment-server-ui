@@ -4,13 +4,9 @@ import { ExperimentsComponent } from './experiments.component';
 import { ExperimentDetailComponent } from './experiment-detail.component';
 import { UsersComponent } from './users.component';
 import { UserDetailComponent } from './user-detail.component';
+import { UsersForExperimentComponent } from './users-for-experiment.component';
 
 export const routes: RouterConfig = [
-  {
-    path: '',
-    redirectTo: '/experiments',
-    pathMatch: 'full'
-  },
   {
     path: 'experiments',
     component: ExperimentsComponent
@@ -18,6 +14,10 @@ export const routes: RouterConfig = [
   {
     path: 'experiments/:id',
     component: ExperimentDetailComponent
+  },
+  {
+    path: 'experiments/:id/users',
+    component: UsersForExperimentComponent
   },
   {
     path: 'users',

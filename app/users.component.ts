@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { User } from './user';
-import { ExperimentService } from './experiment.service';
+import { ExperimentServerService } from './experiment-server.service';
 
 @Component({
   selector: 'users',
@@ -14,10 +14,10 @@ export class UsersComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private experimentService: ExperimentService) { }
+    private experimentServerService: ExperimentServerService) { }
 
   getUsers(){
-    this.experimentService.getUsers().then(users => this.users = users);
+    this.experimentServerService.getUsers().then(users => this.users = users);
   }
 
   ngOnInit() {
@@ -26,8 +26,8 @@ export class UsersComponent implements OnInit {
 
   onSelect(user: User) { this.selectedUser = user; }
 
-  gotoDetail() {
-    this.router.navigate(['/users', this.selectedUser.id]);
+  showUserDetails() {
+    this.router.navigate(['/users/' + this.selectedUser.id]);
   }
 
 }

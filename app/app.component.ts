@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ROUTER_DIRECTIVES } from '@angular/router';
 
-import { ExperimentService } from './experiment.service';
+import { ExperimentServerService } from './experiment-server.service';
 
 @Component({
   selector: 'app',
@@ -14,7 +14,7 @@ import { ExperimentService } from './experiment.service';
   `,
   directives: [ROUTER_DIRECTIVES],
   providers: [
-  	ExperimentService
+  	ExperimentServerService
   ]
 
 })

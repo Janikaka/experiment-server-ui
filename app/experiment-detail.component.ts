@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { Experiment } from './experiment';
-import { ExperimentService } from './experiment.service';
+import { ExperimentServerService } from './experiment-server.service';
 
 @Component({
   selector: 'experiment-detail',
@@ -13,14 +13,14 @@ export class ExperimentDetailComponent implements OnInit, OnDestroy {
   sub: any;
 
   constructor(
-    private experimentService: ExperimentService,
+    private experimentServerService: ExperimentServerService,
     private route: ActivatedRoute) {
   }
 
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
       let id = +params['id'];
-      this.experimentService.getExperiment(id)
+      this.experimentServerService.getExperiment(id)
         .then(experiment => this.experiment = experiment);
     });
   }

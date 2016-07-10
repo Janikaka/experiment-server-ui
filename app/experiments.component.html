@@ -8,7 +8,8 @@
 </ul>
 <div *ngIf="selectedExperiment">
   <h2>
-    {{selectedHero.name | uppercase}}
+    {{selectedExperiment.name}}
   </h2>
-  <button (click)="gotoDetail()">View Details</button>
+  <button (click)="showMetadata()">View Details</button>
+  <button (click)="showUsers()">View Users</button>
 </div>

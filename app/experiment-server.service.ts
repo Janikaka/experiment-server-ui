@@ -6,9 +6,9 @@ import { Injectable } from '@angular/core';
 
 
 @Injectable()
-export class ExperimentService {
-  EXPERIMENTS = [{id:1, name:'first experiment'}];
-  USERS = [{id:1, username:'first user'}];
+export class ExperimentServerService {
+  EXPERIMENTS = [new Experiment(1, 'first experiment'), new Experiment(2, 'second experiment')];
+  USERS = [new User(1, 'first user'), new User(2, 'second user')]
 
   getExperiments() {
     return Promise.resolve(this.EXPERIMENTS);
@@ -26,6 +26,10 @@ export class ExperimentService {
   getUser(id: number) {
     return this.getUsers()
               .then(users => users.find(user => user.id === id));
+  }
+
+  getExperimentsForUser(id: number) {
+    return this.getExperiments();
   }
 
 }

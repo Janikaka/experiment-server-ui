@@ -5,10 +5,12 @@ import { Experiment } from './experiment';
 import { ExperimentServerService } from './experiment-server.service';
 
 @Component({
-  selector: 'experiments',
-  templateUrl: 'app/experiments.component.html',
+  selector: 'users-for-experiment',
+  templateUrl: 'app/users-for-experiment.component.html',
 })
-export class ExperimentsComponent implements OnInit {
+export class UsersForExperimentComponent {
+
+  /*
   experiments: Experiment[];
   selectedExperiment: Experiment;
 
@@ -31,7 +33,7 @@ export class ExperimentsComponent implements OnInit {
   }
 
   showUsers() {
-    this.router.navigate(['/experiments/' + this.selectedExperiment.id + '/users']);
+    this.router.navigate(['/experiments', this.selectedExperiment.id]
   }
-
+*/
 }
