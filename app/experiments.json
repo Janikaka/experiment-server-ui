@@ -1,1 +1,6 @@
-{"data": [{"id": 1, "name": "first experiment"}, {"id": 2, "name": "second experiment"}]}
+{"data": 
+[{"id": 1, 
+"name": "first experiment", 
+"experimentgroups": [{"experimentgroup": "group A", "confKey": "conf key A", "confValue": "conf value A"},
+					{"experimentgroup": "group B", "confKey": "conf key B", "confValue": "conf value B"}]}, 
+		{"id": 2, "name": "second experiment"}]}

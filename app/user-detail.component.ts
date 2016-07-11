@@ -45,7 +45,7 @@ export class UserDetailComponent implements OnInit, OnDestroy {
 
   onSelect(experiment: Experiment) { 
     this.selectedExperiment = experiment; 
-    this.router.navigate(['/experiments/' + this.selectedExperiment.id + '/users']);
+    this.router.navigate(['/experiments/' + this.selectedExperiment.id]);
   }
 
   deleteUser() {

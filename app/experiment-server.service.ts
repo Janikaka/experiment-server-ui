@@ -9,10 +9,8 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class ExperimentServerService {
-  //EXPERIMENTS = [new Experiment(1, 'first experiment'), new Experiment(2, 'second experiment')];
-  //USERS = [new User(1, 'first user'), new User(2, 'second user')]
 
-  constructor(public http:Http) {
+  constructor(private http:Http) {
 
   }
 
@@ -24,7 +22,16 @@ export class ExperimentServerService {
     }
 
     console.log("CREATE EXPERIMENT: " + result);
-    //TODO
+
+    /*
+    let body = JSON.stringify({'name': experiment.name, 'experimentgroups': experiment.experimentgroups});
+    let headers = new Headers({'Content-Type': 'application/json'});
+    let option = new RequestOptions({headers: headers});
+    let url = 'http://127.0.0.1:6543/experiments';
+    this.http.post(url, body, options)
+        .map(this.extractData)
+        .catch(this.handleError);
+    */
   }
 
   getExperiments(): Promise<Experiment[]>{

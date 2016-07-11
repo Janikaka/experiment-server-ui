@@ -1,11 +1,18 @@
 <div *ngIf="experiment">
   <h2>{{experiment.name}}</h2>
     <p><b>Id: </b>{{experiment.id}}</p>
-    <p><b>Name: </b>{{experiment.name}}</p>
-    <p>And other details...</p>
+    <p><b>Name: </b>{{experiment.name}}</p><br>
+    <b>Experiment groups:</b><br><br>
+    <div *ngFor="let experimentgroup of experiment.experimentgroups">
+    	<p><b>Name: </b> {{experimentgroup.experimentgroup}}</p>
+    	<p><b>Conf key: </b> {{experimentgroup.confKey}}</p>
+    	<p><b>Conf value: </b> {{experimentgroup.confValue}}</p>
+    	<br>
+    </div>
 
     <button (click)="deleteExperiment()">Delete</button>
 	<button (click)="goBack()">Back</button>
+	<button (click)="showUsers()">View Users</button>
 	<div *ngIf="deleted === true">
 		<p>Deleted experiment {{experiment.name}}</p>
 		<p>...not really :-(</p>

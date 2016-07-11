@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 
 import { Experiment } from './experiment';
 import { ExperimentServerService } from './experiment-server.service';
@@ -15,6 +16,7 @@ export class ExperimentDetailComponent implements OnInit, OnDestroy {
 
   constructor(
     private experimentServerService: ExperimentServerService,
+    private router: Router,
     private route: ActivatedRoute) {
   }
 
@@ -32,6 +34,10 @@ export class ExperimentDetailComponent implements OnInit, OnDestroy {
 
   goBack() {
     window.history.back();
+  }
+
+  showUsers() {
+    this.router.navigate(['/experiments/' + this.experiment.id + '/users']);
   }
 
   deleteExperiment() {
