@@ -5,8 +5,14 @@ import { ExperimentDetailComponent } from './experiment-detail.component';
 import { UsersComponent } from './users.component';
 import { UserDetailComponent } from './user-detail.component';
 import { UsersForExperimentComponent } from './users-for-experiment.component';
+import { NewExperimentComponent } from './new-experiment.component';
+
 
 export const routes: RouterConfig = [
+  {
+    path:'new_experiment',
+    component: NewExperimentComponent
+  },
   {
     path: 'experiments',
     component: ExperimentsComponent

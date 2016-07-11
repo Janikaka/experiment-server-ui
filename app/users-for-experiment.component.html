@@ -1,1 +1,12 @@
-<p>Users for the experiment</p>
+<div *ngIf="experiment">
+  <h2>Users that participate in experiment <i>{{experiment.name}}</i></h2>
+
+    <h3>Users:</h3>
+    <ul>
+      <li *ngFor="let user of users">
+      	<p><b>Id: </b>{{user.id}}</p>
+        <p><b>Username: </b>{{user.username}}</p>
+      </li>
+    </ul>
+  <button (click)="goBack()">Back</button>
+</div>

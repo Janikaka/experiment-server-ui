@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
+import { User } from './user';
 import { Experiment } from './experiment';
 import { ExperimentServerService } from './experiment-server.service';
 
@@ -8,32 +9,27 @@ import { ExperimentServerService } from './experiment-server.service';
   selector: 'users-for-experiment',
   templateUrl: 'app/users-for-experiment.component.html',
 })
-export class UsersForExperimentComponent {
-
-  /*
-  experiments: Experiment[];
-  selectedExperiment: Experiment;
+export class UsersForExperimentComponent implements OnInit {
+  sub: any;
+  experiment: Experiment;
+  users: User[];
 
   constructor(
-    private router: Router,
+    private route: ActivatedRoute,
     private experimentServerService: ExperimentServerService) { }
 
-  getExperiments() {
-    this.experimentServerService.getExperiments().then(experiments => this.experiments = experiments);
-  }
-
   ngOnInit() {
-    this.getExperiments();
+    this.sub = this.route.params.subscribe(params => {
+      let id = +params['id'];
+      this.experimentServerService.getExperiment(id)
+        .then(experiment => this.experiment = experiment);
+      this.experimentServerService.getUsersForExperiment(id)
+        .then(users => this.users = users);
+      
+    });
   }
 
-  onSelect(experiment: Experiment) { this.selectedExperiment = experiment; }
-
-  showMetadata() {
-    this.router.navigate(['/experiments', this.selectedExperiment.id]);
+  goBack() {
+    window.history.back();
   }
-
-  showUsers() {
-    this.router.navigate(['/experiments', this.selectedExperiment.id]
-  }
-*/
 }

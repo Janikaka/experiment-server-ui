@@ -6,9 +6,13 @@
     <h3>Experiments:</h3>
     <ul>
       <li *ngFor="let experiment of experiments">
-        <b>Name:</b><p>{{experiment.name}}</p>
+        <a (click)="onSelect(experiment)">{{experiment.name}}</a>
       </li>
     </ul>
-   <b>Here dataitems</b><br><br>
+  <button (click)="deleteUser()">Delete</button>
   <button (click)="goBack()">Back</button>
+  <div *ngIf="deleted === true">
+    <p>Deleted user {{user.username}}</p>
+    <p>...not really :-(</p>
+  </div>
 </div>

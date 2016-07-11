@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Experiment } from './experiment';
 import { ExperimentServerService } from './experiment-server.service';
 
+
 @Component({
   selector: 'experiments',
   templateUrl: 'app/experiments.component.html',
@@ -32,6 +33,10 @@ export class ExperimentsComponent implements OnInit {
 
   showUsers() {
     this.router.navigate(['/experiments/' + this.selectedExperiment.id + '/users']);
+  }
+
+  createExperiment() {
+    this.router.navigate(['new_experiment']);
   }
 
 }

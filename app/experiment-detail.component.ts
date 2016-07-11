@@ -10,6 +10,7 @@ import { ExperimentServerService } from './experiment-server.service';
 })
 export class ExperimentDetailComponent implements OnInit, OnDestroy {
   experiment: Experiment;
+  deleted = false; //Remove this later
   sub: any;
 
   constructor(
@@ -31,5 +32,9 @@ export class ExperimentDetailComponent implements OnInit, OnDestroy {
 
   goBack() {
     window.history.back();
+  }
+
+  deleteExperiment() {
+    this.deleted = this.experimentServerService.deleteExperiment(this.experiment.id);
   }
 }

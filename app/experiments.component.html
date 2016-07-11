@@ -6,6 +6,9 @@
     <span class="badge">{{experiment.id}}</span> {{experiment.name}}
   </li>
 </ul>
+
+<a (click)="createExperiment()">Create new experiment</a>
+
 <div *ngIf="selectedExperiment">
   <h2>
     {{selectedExperiment.name}}

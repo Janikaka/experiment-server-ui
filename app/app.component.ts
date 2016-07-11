@@ -9,7 +9,7 @@ import { ExperimentServerService } from './experiment-server.service';
   <nav>
   	<a [routerLink]="['/experiments']">Experiments</a>
   	<a [routerLink]="['/users']">Users</a>
-  </nav>
+  </nav><br><br>
   <router-outlet></router-outlet>
   `,
   directives: [ROUTER_DIRECTIVES],

@@ -4,5 +4,10 @@
     <p><b>Name: </b>{{experiment.name}}</p>
     <p>And other details...</p>
 
-  <button (click)="goBack()">Back</button>
+    <button (click)="deleteExperiment()">Delete</button>
+	<button (click)="goBack()">Back</button>
+	<div *ngIf="deleted === true">
+		<p>Deleted experiment {{experiment.name}}</p>
+		<p>...not really :-(</p>
+	</div>
 </div>
