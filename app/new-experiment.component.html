@@ -25,13 +25,13 @@
 
   <div [hidden]="!submitted">
     <h2>You submitted the following:</h2>
-    <p><b>Name: </b>{{ model.name }}</p>
-    <b>Experiment groups:</b>
+    <h3>Name: </h3><p>{{ model.name }}</p>
+    <h3>Experiment groups:</h3>
     <div *ngIf="experimentgroups">
       <div *ngFor="let experimentgroup of experimentgroups">
         <p><b>Experimentgroup: </b>{{experimentgroup.experimentgroup}}</p>
         <p><b>Configuration key: </b>{{experimentgroup.confKey}}</p>
-        <p><b>Configuration value: </b>{{experimentgroup.confValue}}</p><br>
+        <p><b>Configuration value: </b>{{experimentgroup.confValue}}</p>
       </div>
     </div>
     <br>

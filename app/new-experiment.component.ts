@@ -14,29 +14,30 @@ export class NewExperimentComponent {
     	private experimentServerService: ExperimentServerService) {
   	}
 
-	model = new Experiment(null, '');
+	model = new Experiment(null, '', []);
 	submitted = false;
 	experimentgroups = [];
 
 
 	onSubmit() { 
+		this.submitted = true;
 		let expGroupElements = document.getElementsByClassName("experimentgroup");
 		let confKeyElements = document.getElementsByClassName("confKey");
 		let confValueElements = document.getElementsByClassName("confValue");
 
 
 		this.experimentgroups = [];
+		this.model.experimentgroups = [];
 
 		for(let i = 0; i < expGroupElements.length; i++) {
 			let expgroup = expGroupElements[i]['value'];
 			let confKey = confKeyElements[i]['value'];
 			let confValue = confValueElements[i]['value'];
 			this.experimentgroups.push({'experimentgroup': expgroup, 'confKey': confKey, 'confValue': confValue});
+			this.model.experimentgroups.push({'experimentgroup':expgroup, 'confKey': confKey, 'confValue':confValue});
 		}
-
-		this.submitted = true;
-
-		 	
+		
+		this.experimentServerService.createExperiment(this.model);
 	}
 
 	addExperimentgroup() {

@@ -17,6 +17,13 @@ export class ExperimentServerService {
   }
 
   createExperiment(experiment: Experiment) {
+    let result = experiment.id + ", " + experiment.name + ", ";
+    for(let i = 0; i < experiment.experimentgroups.length; i++) {
+      let expgroup = experiment.experimentgroups[i];
+      result += expgroup.experimentgroup + ", " + expgroup.confKey + ", " + expgroup.confValue + "\n";
+    }
+
+    console.log("CREATE EXPERIMENT: " + result);
     //TODO
   }
 
