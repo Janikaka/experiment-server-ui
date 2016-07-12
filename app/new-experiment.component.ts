@@ -20,6 +20,7 @@ export class NewExperimentComponent {
 
 
 	onSubmit() { 
+		
 		this.submitted = true;
 		let expGroupElements = document.getElementsByClassName("experimentgroup");
 		let confKeyElements = document.getElementsByClassName("confKey");
@@ -33,11 +34,12 @@ export class NewExperimentComponent {
 			let expgroup = expGroupElements[i]['value'];
 			let confKey = confKeyElements[i]['value'];
 			let confValue = confValueElements[i]['value'];
-			this.experimentgroups.push({'experimentgroup': expgroup, 'confKey': confKey, 'confValue': confValue});
-			this.model.experimentgroups.push({'experimentgroup':expgroup, 'confKey': confKey, 'confValue':confValue});
+			this.experimentgroups.push({'name': expgroup, 'configurations': [{'key':confKey, 'value':confValue}]});
+			this.model.experimentgroups.push({'id':100, 'name': expgroup, 'configurations': [{'id':1001,'key':confKey, 'value':confValue}]});
 		}
 		
 		this.experimentServerService.createExperiment(this.model);
+		
 	}
 
 	addExperimentgroup() {

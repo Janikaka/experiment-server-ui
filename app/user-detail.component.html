@@ -6,7 +6,8 @@
     <h3>Experiments:</h3>
     <ul>
       <li *ngFor="let experiment of experiments">
-        <a (click)="onSelect(experiment)">{{experiment.name}}</a>
+        <p><b>Experiment: </b><a (click)="onSelect(experiment)">{{experiment.name}}</a></p>
+        <p><b>Experiment group: </b><a>{{experiment.experimentgroup.name}}</a></p>
       </li>
     </ul>
   <button (click)="deleteUser()">Delete</button>

@@ -29,9 +29,12 @@
     <h3>Experiment groups:</h3>
     <div *ngIf="experimentgroups">
       <div *ngFor="let experimentgroup of experimentgroups">
-        <p><b>Experimentgroup: </b>{{experimentgroup.experimentgroup}}</p>
-        <p><b>Configuration key: </b>{{experimentgroup.confKey}}</p>
-        <p><b>Configuration value: </b>{{experimentgroup.confValue}}</p>
+        <p><b>Experimentgroup: </b>{{experimentgroup.name}}</p>
+        <b>Configurations:</b>
+        <div *ngFor="let conf of experimentgroup.configurations">
+          <p><b>Key: </b>{{conf.key}}</p>
+          <p><b>Value: </b>{{conf.value}}</p>
+        </div>
       </div>
     </div>
     <br>

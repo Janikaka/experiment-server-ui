@@ -1,7 +1,13 @@
+class Configuration {
+	id: number;
+	key: string;
+	value: number;
+}
+
 class Experimentgroup {
-	experimentgroup: string;
-	confKey: string;
-	confValue: string;
+	id: number;
+	name: string;
+	configurations: Configuration[]
 }
 
 export class Experiment {

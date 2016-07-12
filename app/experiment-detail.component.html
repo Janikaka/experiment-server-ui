@@ -4,9 +4,11 @@
     <p><b>Name: </b>{{experiment.name}}</p><br>
     <b>Experiment groups:</b><br><br>
     <div *ngFor="let experimentgroup of experiment.experimentgroups">
-    	<p><b>Name: </b> {{experimentgroup.experimentgroup}}</p>
-    	<p><b>Conf key: </b> {{experimentgroup.confKey}}</p>
-    	<p><b>Conf value: </b> {{experimentgroup.confValue}}</p>
+    	<p><b>Name: </b> {{experimentgroup.name}}</p>
+        <b>Configurations:</b>
+        <div *ngFor="let conf of experimentgroup.configurations">
+            <p><b>Key: </b> {{conf.key}}<b>. Value: </b> {{conf.value}}</p>
+        </div>
     	<br>
     </div>
 
