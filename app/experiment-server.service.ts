@@ -39,23 +39,16 @@ export class ExperimentServerService {
   deleteExperiment(id: number) {
     let url = 'http://127.0.0.1:6543/experiments/' + id;
     this.http.delete(url)
-      .toPromise()
+             .toPromise()
     return true;
   }
 
   deleteUser(id: number) {
+    let url = 'http://127.0.0.1:6543/users/' + id;
+
+    this.http.delete(url)
+             .toPromise()
     return true;
-    /*
-    let headers = new Headers();
-    headers.append('Content-Type', 'application/json');
-
-    let url = 'http://127.0.0.1:6543/users' + id;
-
-    return this.http
-               .delete(url, headers)
-               .toPromise()
-               .catch(this.handleError);
-    */
   }
 
   getUsersForExperiment(id: number) {
