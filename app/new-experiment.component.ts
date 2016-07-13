@@ -26,7 +26,7 @@ export class NewExperimentComponent {
 		this.submitted = true;
 		this.model.experimentgroups = [];
 		for(let j = 1; j <= this.experimentgroups.length; j++) {
-			let name = document.getElementById(j)['value'];
+			let name = document.getElementById("" +j)['value'];
 			let experimentgroup = {'id':null,'name': name, 'configurations': []};
 			for(let i = 1; i <= this.experimentgroups[j-1]['configurations'].length; i++) {
 				let key = document.getElementById(j + '_' + i +'_key')['value'];
