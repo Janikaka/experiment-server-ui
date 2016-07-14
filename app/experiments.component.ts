@@ -39,4 +39,8 @@ export class ExperimentsComponent implements OnInit {
     this.router.navigate(['new_experiment']);
   }
 
+  deleteExperiment() {
+    this.experimentServerService.deleteExperiment(this.selectedExperiment.id);
+  }
+
 }

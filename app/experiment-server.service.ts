@@ -52,6 +52,13 @@ export class ExperimentServerService {
     return true;
   }
 
+  deleteUserFromExperiment(userId: number, experimentId: number) {
+    let url = 'http://127.0.0.1:6543/experiments/' + experimentId + '/users/' + userId;
+
+    this.http.delete(url)
+             .toPromise()
+  }
+
   getUsersForExperiment(id: number) {
    return this.http
         .get('http://127.0.0.1:6543/experiments/' + id + '/users')

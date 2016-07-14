@@ -1,10 +1,16 @@
 <div *ngIf="experiment">
   <h2>Users that participate in experiment <i>{{experiment.name}}</i></h2>
-
     <h3>Users:</h3>
     <ul>
       <li *ngFor="let user of users">
-      	<p><b>Id: </b>{{user.id}}</p>
+      	<p>
+          <b>Id: </b>{{user.id}} &nbsp;&nbsp;&nbsp;&nbsp;
+          <button (click)="deleteUserFromExp(user.id)" (mouseout)="showDeleteText(false, user.id)" 
+          (mouseover)="showDeleteText(true, user.id)">
+            Delete User
+          </button>
+          <i id="deleteText_{{user.id}}" hidden>&nbsp;&nbsp;User will be deleted only from the experiment</i>
+        </p>
         <p><b>Username: </b><a href="/users/{{user.id}}">{{user.username}}</a></p>
         <p><b>Experimentgroup: </b><a>{{user.experimentgroup.name}}</a></p>
       </li>

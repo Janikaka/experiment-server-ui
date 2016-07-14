@@ -29,6 +29,14 @@ export class UsersForExperimentComponent implements OnInit {
     });
   }
 
+  showDeleteText(bool, id) {
+    document.getElementById("deleteText_" + id).hidden = !bool;
+  }
+
+  deleteUserFromExp(userId) {
+    this.experimentServerService.deleteUserFromExperiment(userId, this.experiment.id);
+  }
+
   goBack() {
     window.history.back();
   }
