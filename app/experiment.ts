@@ -1,14 +1,4 @@
-class Configuration {
-	id: number;
-	key: string;
-	value: number;
-}
-
-class Experimentgroup {
-	id: number;
-	name: string;
-	configurations: Configuration[]
-}
+import { Experimentgroup } from './experimentgroup';
 
 export class Experiment {
 	id: number;

@@ -1,5 +1,7 @@
 import { Experiment } from './experiment';
+import { Experimentgroup } from './Experimentgroup';
 import { User } from './user';
+
 import { Http, Response, Headers } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 import { Observable } from 'rxjs/Observable';
@@ -35,6 +37,10 @@ export class ExperimentServerService {
         .get("http://127.0.0.1:6543/experiments/" + id + "/metadata")
         .toPromise()
         .then(this.extractData);
+  }
+
+  getExperimentgroup(id: number): Promise<Experimentgroup> {
+
   }
 
   deleteExperiment(id: number) {

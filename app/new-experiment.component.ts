@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
 import { Experiment } from './experiment';
+import { Experimentgroup } from './experimentgroup'
 import { ExperimentServerService } from './experiment-server.service';
 
 @Component({
@@ -15,9 +16,9 @@ export class NewExperimentComponent {
 	model = new Experiment(null, '', []);
 	submitted = false;
 	
-	experimentgroups = [];
+	experimentgroups: Experimentgroup[];
 	addExperimentgroup() {
-		this.experimentgroups.push({'id': this.experimentgroups.length+1, 'name':'', 'configurations':[]});
+		this.experimentgroups.push({'id': null, 'name':'', 'configurations':[]});
 	}
 	addConf(id) {
 		this.experimentgroups[id-1]['configurations'].push({'id':this.experimentgroups[id-1]['configurations'].length+1, 'key':'', 'value': null});
