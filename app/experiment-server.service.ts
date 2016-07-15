@@ -1,5 +1,5 @@
 import { Experiment } from './experiment';
-import { Experimentgroup } from './Experimentgroup';
+import { Experimentgroup } from './experimentgroup';
 import { User } from './user';
 
 import { Http, Response, Headers } from '@angular/http';
@@ -39,15 +39,16 @@ export class ExperimentServerService {
         .then(this.extractData);
   }
 
-  getExperimentgroup(id: number): Promise<Experimentgroup> {
-
-  }
-
   deleteExperiment(id: number) {
     let url = 'http://127.0.0.1:6543/experiments/' + id;
     this.http.delete(url)
              .toPromise()
     return true;
+  }
+
+  deleteExperimentgroup(id: number) {
+    //TODO
+    console.log("Deleted experimentgroup " + id);
   }
 
   deleteUser(id: number) {

@@ -16,9 +16,9 @@ export class NewExperimentComponent {
 	model = new Experiment(null, '', []);
 	submitted = false;
 	
-	experimentgroups: Experimentgroup[];
+	experimentgroups = [];
 	addExperimentgroup() {
-		this.experimentgroups.push({'id': null, 'name':'', 'configurations':[]});
+		this.experimentgroups.push({'id': this.experimentgroups.length+1, 'name':'', 'configurations':[]});
 	}
 	addConf(id) {
 		this.experimentgroups[id-1]['configurations'].push({'id':this.experimentgroups[id-1]['configurations'].length+1, 'key':'', 'value': null});

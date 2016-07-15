@@ -27,7 +27,6 @@ export class UsersComponent implements OnInit {
   onSelect(user: User) { this.selectedUser = user; }
 
   showUserDetails() {
-    console.log("selecteduserID :" + this.selectedUser.id);
     this.router.navigate(['/users/', this.selectedUser.id]);
   }
 

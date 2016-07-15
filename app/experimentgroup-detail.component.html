@@ -1,0 +1,22 @@
+<div *ngIf="experimentgroup">
+	<h2>{{experimentgroup.name}}</h2>
+	<p><b>Id: </b>{{experimentgroup.id}}</p>
+	<p><b>Name: </b>{{experimentgroup.name}}</p>
+	<p><b>Configurations:</b></p>
+	<ul *ngFor="let conf of experimentgroup.configurations">
+		<li>	
+			<p><b>Id: </b>{{conf.id}}</p>
+			<p><b>Key: </b>{{conf.key}}</p>
+			<p><b>Value: </b>{{conf.value}}</p>
+		</li>
+	</ul>
+	<p><b>Users:</b></p>
+	<ul *ngFor="let user of experimentgroup.users">
+		<li>
+			<p><b>Id: </b>{{user.id}}</p>
+			<p><b>Username: </b><a href="/users/{{user.id}}">{{user.username}}</a></p>
+		</li>
+	</ul>
+	<button (click)="goBack()">Back</button>&nbsp;&nbsp;
+	<button (click)="deleteExperimentgroup()">Delete</button>
+</div>

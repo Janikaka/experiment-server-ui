@@ -12,7 +12,10 @@
           <i id="deleteText_{{user.id}}" hidden>&nbsp;&nbsp;User will be deleted only from the experiment</i>
         </p>
         <p><b>Username: </b><a href="/users/{{user.id}}">{{user.username}}</a></p>
-        <p><b>Experimentgroup: </b><a>{{user.experimentgroup.name}}</a></p>
+        <p><b>Experimentgroup: </b>
+        <a href="/experiments/{{experiment.id}}/experimentgroups/{{user.experimentgroup.id}}">
+          {{user.experimentgroup.name}}
+        </a></p>
       </li>
     </ul>
   <button (click)="goBack()">Back</button>

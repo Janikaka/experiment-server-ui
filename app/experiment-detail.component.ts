@@ -1,6 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { Experiment } from './experiment';
 import { ExperimentServerService } from './experiment-server.service';
@@ -17,8 +16,8 @@ export class ExperimentDetailComponent implements OnInit, OnDestroy {
   constructor(
     private experimentServerService: ExperimentServerService,
     private router: Router,
-    private route: ActivatedRoute) {
-  }
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
