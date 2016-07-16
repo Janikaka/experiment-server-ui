@@ -1,9 +1,8 @@
 <div *ngIf="user">
   <h2>{{user.username}}</h2>
     <p><b>Id: </b>{{user.id}}</p>
-  
     <p><b>Username: </b>{{user.username}}</p>
-    <h3>Experiments:</h3>
+    <b>Experiments:</b>
     <ul>
       <li *ngFor="let experiment of experiments">
         <p><b>Experiment: </b><a (click)="onSelect(experiment)">{{experiment.name}}</a></p>
@@ -14,6 +13,7 @@
         </p>
       </li>
     </ul>
+    <p><b>Number of dataitems: </b>{{user.totalDataitems}}</p>
   <button (click)="deleteUser()">Delete</button>
   <button (click)="goBack()">Back</button>
   <div *ngIf="deleted === true">

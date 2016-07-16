@@ -16,7 +16,6 @@ export class ExperimentServerService {
   constructor(private http:Http) {}
 
   createExperiment(experiment: Experiment) {
-    console.log("Experiment:" + experiment);
     let body = JSON.stringify({'name': experiment.name, 'experimentgroups': experiment.experimentgroups});
     let url = 'http://127.0.0.1:6543/experiments';
     this.http.post(url, body)
