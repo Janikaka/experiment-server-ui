@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 
 import { User } from './user';
 import { Experiment } from './experiment';
+import { Configuration } from './configuration';
 import { ExperimentServerService } from './experiment-server.service';
 
 @Component({
@@ -14,6 +15,7 @@ import { ExperimentServerService } from './experiment-server.service';
 export class UserDetailComponent implements OnInit, OnDestroy {
   user: User;
   experiments: Experiment[];
+  configurations: Configuration[];
   sub: any;
   selectedExperiment: Experiment;
   deleted: boolean //Remove this later
@@ -28,10 +30,13 @@ export class UserDetailComponent implements OnInit, OnDestroy {
     this.sub = this.route.params.subscribe(params => {
       let id = +params['id'];
       this.experimentServerService.getUser(id)
-        .then(user => this.user = user);
+        .then(user => {
+              this.user = user;
+              this.experimentServerService.getConfigurationsForUser(user.username)
+              .then(configurations => this.configurations = configurations);
+        });
       this.experimentServerService.getExperimentsForUser(id)
         .then(experiments => this.experiments = experiments);
-      
     });
   }
 

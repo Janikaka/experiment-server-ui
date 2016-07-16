@@ -1,8 +1,9 @@
 import { Experiment } from './experiment';
 import { Experimentgroup } from './experimentgroup';
 import { User } from './user';
+import { Configuration } from './configuration';
 
-import { Http, Response, Headers } from '@angular/http';
+import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 import { Observable } from 'rxjs/Observable';
 
@@ -82,6 +83,16 @@ export class ExperimentServerService {
   getUser(id: number) {
     return this.getUsers()
               .then(users => users.find(user => user.id === id));
+  }
+
+  getConfigurationsForUser(username: string): Promise<Configuration[]> {
+    let headers = new Headers({'username': username});
+    let options = new RequestOptions({headers: headers});
+    //Bug: Before npm start have to remove '{}' and then add them back after npm start
+    return this.http
+          .get('http://127.0.0.1:6543/configurations', {}, options) 
+          .toPromise()
+          .then(this.extractData);
   }
 
   getExperimentsForUser(id: number) {
