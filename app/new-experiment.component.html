@@ -5,12 +5,32 @@
     <form *ngIf="active" (ngSubmit)="onSubmit()" #experimentForm="ngForm">
 
       <div class="form-group">
-        <label for="name">Name</label>
+        <b>Name</b>
         <input type="text" class="form-control" required
           [(ngModel)]="model.name"
             name="name"  #name="ngModel" placeholder="Enter experiment name">
         <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
           Name is required
+        </div>
+      </div><br>
+
+      <div class="form-group">
+        <b>Start datetime</b>
+        <input type="text" class="form-control" required
+          [(ngModel)]="model.startDatetime"
+            name="startDatetime"  #startDatetime="ngModel" placeholder="Enter start datetime">
+        <div [hidden]="startDatetime.valid || startDatetime.pristine" class="alert alert-danger">
+          Start datetime is required
+        </div>
+      </div><br>
+
+      <div class="form-group">
+        <b>End datetime</b>
+        <input type="text" class="form-control" required
+          [(ngModel)]="model.endDatetime"
+            name="endDatetime"  #endDatetime="ngModel" placeholder="Enter end datetime">
+        <div [hidden]="endDatetime.valid || endDatetime.pristine" class="alert alert-danger">
+          End datetime is required
         </div>
       </div><br>
       

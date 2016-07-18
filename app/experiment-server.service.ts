@@ -17,7 +17,12 @@ export class ExperimentServerService {
   constructor(private http:Http) {}
 
   createExperiment(experiment: Experiment) {
-    let body = JSON.stringify({'name': experiment.name, 'experimentgroups': experiment.experimentgroups});
+    let body = JSON.stringify(
+      {'name': experiment.name, 
+      'startDatetime': experiment.startDatetime,
+      'endDatetime': experiment.endDatetime,
+      'experimentgroups': experiment.experimentgroups
+      });
     let url = 'http://127.0.0.1:6543/experiments';
     this.http.post(url, body)
         .toPromise()
@@ -90,7 +95,7 @@ export class ExperimentServerService {
     let options = new RequestOptions({headers: headers});
     //Bug: Before npm start have to remove '{}' and then add them back after npm start
     return this.http
-          .get('http://127.0.0.1:6543/configurations', {}, options) 
+          .get('http://127.0.0.1:6543/configurations', options) 
           .toPromise()
           .then(this.extractData);
   }
