@@ -21,7 +21,8 @@ export class ExperimentServerService {
       {'name': experiment.name, 
       'startDatetime': experiment.startDatetime,
       'endDatetime': experiment.endDatetime,
-      'experimentgroups': experiment.experimentgroups
+      'experimentgroups': experiment.experimentgroups,
+      'size': experiment.size
       });
     let url = 'http://127.0.0.1:6543/experiments';
     this.http.post(url, body)

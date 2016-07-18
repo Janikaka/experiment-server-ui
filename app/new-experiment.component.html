@@ -5,7 +5,7 @@
     <form *ngIf="active" (ngSubmit)="onSubmit()" #experimentForm="ngForm">
 
       <div class="form-group">
-        <b>Name</b>
+        <b>Name: </b>
         <input type="text" class="form-control" required
           [(ngModel)]="model.name"
             name="name"  #name="ngModel" placeholder="Enter experiment name">
@@ -15,22 +15,32 @@
       </div><br>
 
       <div class="form-group">
-        <b>Start datetime</b>
+        <b>Start datetime: </b>
         <input type="text" class="form-control" required
           [(ngModel)]="model.startDatetime"
-            name="startDatetime"  #startDatetime="ngModel" placeholder="Enter start datetime">
+            name="startDatetime"  #startDatetime="ngModel" placeholder="YYYY-MM-DD HH:MM:SS">
         <div [hidden]="startDatetime.valid || startDatetime.pristine" class="alert alert-danger">
           Start datetime is required
         </div>
       </div><br>
 
       <div class="form-group">
-        <b>End datetime</b>
+        <b>End datetime: </b>
         <input type="text" class="form-control" required
           [(ngModel)]="model.endDatetime"
-            name="endDatetime"  #endDatetime="ngModel" placeholder="Enter end datetime">
+            name="endDatetime"  #endDatetime="ngModel" placeholder="YYYY-MM-DD HH:MM:SS">
         <div [hidden]="endDatetime.valid || endDatetime.pristine" class="alert alert-danger">
           End datetime is required
+        </div>
+      </div><br>
+
+      <div class="form-group">
+        <b>Size</b>
+        <input type="text" class="form-control" required
+          [(ngModel)]="model.size"
+            name="size"  #size="ngModel" placeholder="Enter experiment size" value="100">
+        <div [hidden]="size.valid || size.pristine" class="alert alert-danger">
+          Experiment size is required
         </div>
       </div><br>
       
