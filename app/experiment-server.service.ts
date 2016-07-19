@@ -94,7 +94,6 @@ export class ExperimentServerService {
   getConfigurationsForUser(username: string): Promise<Configuration[]> {
     let headers = new Headers({'username': username});
     let options = new RequestOptions({headers: headers});
-    //Bug: Before npm start have to remove '{}' and then add them back after npm start
     return this.http
           .get('http://127.0.0.1:6543/configurations', options) 
           .toPromise()
