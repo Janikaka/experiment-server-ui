@@ -7,7 +7,7 @@
     <li *ngFor="let experiment of experiments">
       <p><b>Experiment: </b><a (click)="onSelect(experiment)">{{experiment.name}}</a></p>
       <p><b>Experiment group: </b>
-      <a href="/experiments/{{experiment.id}}/experimentgroups/{{experiment.experimentgroup.id}}">
+      <a (click)="showExpgroup(experiment.experimentgroup.id)">
         {{experiment.experimentgroup.name}}
       </a>
       </p>

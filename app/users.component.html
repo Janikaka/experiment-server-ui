@@ -1,14 +1,17 @@
 <h2>Users</h2>
 <ul class="heroes">
   <li *ngFor="let user of users"
-    [class.selected]="user === selectedUser"
-    (click)="onSelect(user)">
-    <span class="badge">{{user.id}}</span><span class="text">{{user.username}}</span><button class="delete">Delete</button>
+    [class.selected]="user === selectedUser">
+    <span (click)="onSelect(user)" class="badge">{{user.id}}</span>
+    <span (click)="onSelect(user)" class="text">{{user.username}}</span>
+    <button (click)="deleteUser(user.id)" class="delete">Delete</button>
   </li>
 </ul>
+<!--
 <div *ngIf="selectedUser">
   <h2>
     {{selectedUser.username}}
   </h2>
   <button (click)="showUserDetails()">View Details</button>
 </div>
+-->

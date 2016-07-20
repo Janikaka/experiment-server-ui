@@ -1,9 +1,10 @@
 <h2>Experiments</h2>
 <ul class="heroes">
   <li *ngFor="let experiment of experiments"
-    [class.selected]="experiment === selectedExperiment"
-    (click)="onSelect(experiment)">
-    <span class="badge">{{experiment.id}}</span> {{experiment.name}}
+    [class.selected]="experiment === selectedExperiment">
+    <span (click)="onSelect(experiment)" class="badge">{{experiment.id}}</span>
+    <span (click)="onSelect(experiment)">{{experiment.name}}</span>
+    <button (click)="deleteExperiment(experiment.id)" class="delete">Delete</button>
   </li>
 </ul>
 
@@ -15,5 +16,4 @@
   </h2>
   <button (click)="showMetadata()">View Details</button>
   <button (click)="showUsers()">View Users</button>
-  <button (click)="deleteExperiment()">Delete Experiment</button>
 </div>

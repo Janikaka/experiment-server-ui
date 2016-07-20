@@ -27,7 +27,7 @@ export const routes: RouterConfig = [
     component: UsersForExperimentComponent
   },
   {
-    path: 'experiments/:experimentId/experimentgroups/:experimentgroupId',
+    path: 'experimentgroups/:id',
     component: ExperimentgroupDetailComponent
   },
   {

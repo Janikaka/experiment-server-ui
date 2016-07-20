@@ -45,6 +45,13 @@ export class ExperimentServerService {
         .then(this.extractData);
   }
 
+  getExperimentgroup(id: number): Promise<Experimentgroup> {
+    let url = 'http://127.0.0.1:6543/experimentgroups/' + id;
+    return this.http.get(url)
+             .toPromise()
+             .then(this.extractData)
+  }
+
   deleteExperiment(id: number) {
     let url = 'http://127.0.0.1:6543/experiments/' + id;
     this.http.delete(url)
@@ -54,7 +61,6 @@ export class ExperimentServerService {
 
   deleteExperimentgroup(id: number) {
     let url = 'http://127.0.0.1:6543/experimentgroups/' + id;
-
     this.http.delete(url)
              .toPromise()
     return true;

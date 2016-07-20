@@ -24,16 +24,9 @@ export class ExperimentgroupDetailComponent implements OnInit, OnDestroy {
 	ngOnInit() {
 		//Do this better?
 		this.sub = this.route.params.subscribe(params => {
-      		let experimentId = +params['experimentId'];
-      		let experimentgroupId = +params['experimentgroupId'];
-      		this.experimentServerService.getExperiment(experimentId)
-      			.then(experiment => {
-      				for(let i = 0; i < experiment.experimentgroups.length; i++) {
-    					if(experiment.experimentgroups[i].id == experimentgroupId) {
-    						this.experimentgroup = experiment.experimentgroups[i];
-    					}
-    				}
-    			})
+      		let id = +params['id'];
+      		this.experimentServerService.getExperimentgroup(id)
+      			.then(experimentgroup => this.experimentgroup = experimentgroup)
     	});
 	}
 

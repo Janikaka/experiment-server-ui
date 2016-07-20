@@ -57,4 +57,8 @@ export class UserDetailComponent implements OnInit, OnDestroy {
     this.deleted = this.experimentServerService.deleteUser(this.user.id);
   }
 
+  showExpgroup(id) {
+    this.router.navigate(['/experimentgroups/', id]);
+  }
+
 }

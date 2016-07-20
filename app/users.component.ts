@@ -10,7 +10,7 @@ import { ExperimentServerService } from './experiment-server.service';
 })
 export class UsersComponent implements OnInit {
   users: User[];
-  selectedUser: User;
+  //selectedUser: User;
 
   constructor(
     private router: Router,
@@ -24,10 +24,18 @@ export class UsersComponent implements OnInit {
     this.getUsers();
   }
 
-  onSelect(user: User) { this.selectedUser = user; }
-
+  onSelect(user: User) { 
+    //this.selectedUser = user; 
+    this.router.navigate(['/users/', user.id]);
+  }
+/*
   showUserDetails() {
     this.router.navigate(['/users/', this.selectedUser.id]);
+  }
+*/
+
+  deleteUser(id) {
+    this.experimentServerService.deleteUser(id);
   }
 
 }
