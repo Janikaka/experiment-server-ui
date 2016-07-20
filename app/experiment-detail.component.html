@@ -19,6 +19,7 @@
                     <p><b>Key: </b> {{conf.key}}<b>. Value: </b> {{conf.value}}</p>
                 </li>
             </ul>
+            <button (click)="deleteExperimentgroup(experimentgroup.id)">Delete experimentgroup</button>
         </li>
     </ul>
     <p><b>Number of dataitems: </b>{{experiment.totalDataitems}}</p>

@@ -53,8 +53,11 @@ export class ExperimentServerService {
   }
 
   deleteExperimentgroup(id: number) {
-    //TODO
-    console.log("Deleted experimentgroup " + id);
+    let url = 'http://127.0.0.1:6543/experimentgroups/' + id;
+
+    this.http.delete(url)
+             .toPromise()
+    return true;
   }
 
   deleteUser(id: number) {

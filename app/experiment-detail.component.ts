@@ -42,4 +42,8 @@ export class ExperimentDetailComponent implements OnInit, OnDestroy {
   deleteExperiment() {
     this.deleted = this.experimentServerService.deleteExperiment(this.experiment.id);
   }
+
+  deleteExperimentgroup(id) {
+    this.experimentServerService.deleteExperimentgroup(id);
+  }
 }
