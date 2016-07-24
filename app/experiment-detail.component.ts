@@ -23,7 +23,7 @@ export class ExperimentDetailComponent implements OnInit, OnDestroy {
     this.sub = this.route.params.subscribe(params => {
       let id = +params['id'];
       this.experimentServerService.getExperiment(id)
-        .then(experiment => this.experiment = experiment);
+        .then(experiment => {this.experiment = experiment});
     });
   }
 
@@ -49,5 +49,9 @@ export class ExperimentDetailComponent implements OnInit, OnDestroy {
 
   showExpgroup(id) {
     this.router.navigate(['/experimentgroups/', id]);
+  }
+
+  showExperimentData() {
+    this.router.navigate(['experiments/' + this.experiment.id + '/data']);
   }
 }

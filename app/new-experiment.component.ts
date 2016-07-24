@@ -13,7 +13,7 @@ export class NewExperimentComponent {
 	constructor(
     	private experimentServerService: ExperimentServerService) {
   	}
-	model = new Experiment(null, '', [], null, null, null, null);
+	model = new Experiment(null, '', [], null, null, null, null, null);
 	submitted = false;
 	
 	experimentgroups = [];

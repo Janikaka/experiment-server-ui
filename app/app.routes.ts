@@ -7,6 +7,7 @@ import { UserDetailComponent } from './user-detail.component';
 import { UsersForExperimentComponent } from './users-for-experiment.component';
 import { NewExperimentComponent } from './new-experiment.component';
 import { ExperimentgroupDetailComponent } from './experimentgroup-detail.component';
+import { ExperimentDataComponent } from './experiment-data.component';
 
 
 export const routes: RouterConfig = [
@@ -21,6 +22,10 @@ export const routes: RouterConfig = [
   {
     path: 'experiments/:id',
     component: ExperimentDetailComponent
+  },
+  {
+    path: 'experiments/:id/data',
+    component: ExperimentDataComponent
   },
   {
     path: 'experiments/:id/users',

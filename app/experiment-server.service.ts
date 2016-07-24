@@ -45,6 +45,13 @@ export class ExperimentServerService {
         .then(this.extractData);
   }
 
+  getExperimentData(id: number) {
+    return this.http
+        .get("http://127.0.0.1:6543/experiments/" + id + "/data")
+        .toPromise()
+        .then(this.extractData);
+  }
+
   getExperimentgroup(id: number): Promise<Experimentgroup> {
     let url = 'http://127.0.0.1:6543/experimentgroups/' + id;
     return this.http.get(url)
