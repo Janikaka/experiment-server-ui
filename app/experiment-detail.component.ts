@@ -12,6 +12,7 @@ export class ExperimentDetailComponent implements OnInit, OnDestroy {
   experiment: Experiment;
   deleted = false; //Remove this later
   sub: any;
+  data: string;
 
   constructor(
     private experimentServerService: ExperimentServerService,
@@ -23,7 +24,7 @@ export class ExperimentDetailComponent implements OnInit, OnDestroy {
     this.sub = this.route.params.subscribe(params => {
       let id = +params['id'];
       this.experimentServerService.getExperiment(id)
-        .then(experiment => {this.experiment = experiment});
+        .then(experiment => {this.experiment = experiment; this.data = 'http://127.0.0.1:6543/experiments/' + this.experiment.id + '/data'});
     });
   }
 
@@ -50,8 +51,9 @@ export class ExperimentDetailComponent implements OnInit, OnDestroy {
   showExpgroup(id) {
     this.router.navigate(['/experimentgroups/', id]);
   }
-
+/*
   showExperimentData() {
     this.router.navigate(['experiments/' + this.experiment.id + '/data']);
   }
+*/
 }

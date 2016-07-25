@@ -18,8 +18,7 @@ export class ExperimentDataComponent implements OnInit, OnDestroy {
 	ngOnInit() {
 		this.sub = this.route.params.subscribe(params => {
       		let id = +params['id'];
-      		this.experimentServerService.getExperimentData(id)
-      			.then(data => this.data = JSON.stringify(data))
+      		this.router.navigate(['/experiments/' + id + '/data']);
     	});
 	}
 

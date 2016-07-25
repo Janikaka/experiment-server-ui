@@ -23,10 +23,11 @@ export const routes: RouterConfig = [
     path: 'experiments/:id',
     component: ExperimentDetailComponent
   },
+  /*
   {
     path: 'experiments/:id/data',
     component: ExperimentDataComponent
-  },
+  },*/
   {
     path: 'experiments/:id/users',
     component: UsersForExperimentComponent
