@@ -45,11 +45,11 @@ export class ExperimentDetailComponent implements OnInit, OnDestroy {
   }
 
   deleteExperimentgroup(id) {
-    this.experimentServerService.deleteExperimentgroup(id);
+    this.experimentServerService.deleteExperimentgroup(this.experiment.id, id);
   }
 
   showExpgroup(id) {
-    this.router.navigate(['/experimentgroups/', id]);
+    this.router.navigate(['/experiments/' + this.experiment.id +'/experimentgroups/' + id]);
   }
 /*
   showExperimentData() {

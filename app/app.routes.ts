@@ -33,7 +33,7 @@ export const routes: RouterConfig = [
     component: UsersForExperimentComponent
   },
   {
-    path: 'experimentgroups/:id',
+    path: 'experiments/:expid/experimentgroups/:expgroupid',
     component: ExperimentgroupDetailComponent
   },
   {

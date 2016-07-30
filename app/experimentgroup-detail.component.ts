@@ -12,6 +12,7 @@ import { ExperimentServerService } from './experiment-server.service';
 
 export class ExperimentgroupDetailComponent implements OnInit, OnDestroy {
 	experimentgroup: Experimentgroup;
+	experimentId: number;
 	//experiment: Experiment;
 	sub: any;
 
@@ -24,8 +25,10 @@ export class ExperimentgroupDetailComponent implements OnInit, OnDestroy {
 	ngOnInit() {
 		//Do this better?
 		this.sub = this.route.params.subscribe(params => {
-      		let id = +params['id'];
-      		this.experimentServerService.getExperimentgroup(id)
+      		let expid = +params['expid'];
+      		this.experimentId = expid
+      		let expgroupid = +params['expgroupid'];
+      		this.experimentServerService.getExperimentgroup(expid, expgroupid)
       			.then(experimentgroup => this.experimentgroup = experimentgroup)
     	});
 	}
@@ -35,7 +38,7 @@ export class ExperimentgroupDetailComponent implements OnInit, OnDestroy {
 	}
 
 	deleteExperimentgroup() {
-		this.experimentServerService.deleteExperimentgroup(this.experimentgroup.id);
+		this.experimentServerService.deleteExperimentgroup(this.experimentId, this.experimentgroup.id);
 	}
 
 	ngOnDestroy() {
