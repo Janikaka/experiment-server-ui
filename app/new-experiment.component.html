@@ -54,24 +54,20 @@
   <div *ngFor="let exp of experimentgroups" class="form-group">
     <hr style="width:100%" align="left">
     <b>Name: </b>
-    <input type="text" id="{{exp.id}}" #name placeholder="Enter experiment group"><br><br>
-    <b>Configurations: </b> <button type="button" (click)="addConf(name.id)">Add configuration</button><br><br>
+    <input type="text" id="{{exp.id}}" #expgroup placeholder="Enter experiment group"><br><br>
+    <b>Configurations: </b> 
+    <button type="button" (click)="addConf(expgroup.id)">Add configuration</button><br><br>
     <div *ngFor="let conf of exp.configurations">
+      <div #config id="{{conf.id}}">
       <b>Key</b>
       <input type="text" id="{{exp.id}}_{{conf.id}}_key">
       <b></b>
-      <div class="dropdown">
-        <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">Type for the value
-        <span class="caret"></span></button>
-        <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-          <li role="presentation"><a role="menuitem" tabindex="-1" href="#" id="{{exp.id}}_{{conf.id}}_type_int">Integer</a></li>
-          <li role="presentation"><a role="menuitem" tabindex="-1" href="#" id="{{exp.id}}_{{conf.id}}_type_double">Double</a></li>
-          <li role="presentation"><a role="menuitem" tabindex="-1" href="#" id="{{exp.id}}_{{conf.id}}_type_boolean">Boolean</a></li>
-          <li role="presentation"><a role="menuitem" tabindex="-1" href="#" id="{{exp.id}}_{{conf.id}}_type_string">String</a></li>
-        </ul>
-      </div>
+      <select id="{{exp.id}}_{{conf.id}}_select">
+        <option *ngFor="let type of valueTypes" #confValueType value="{{type}}">{{type}}</option>
+      </select>
       <b>Value</b>
       <input type="text" id="{{exp.id}}_{{conf.id}}_value"> <br><br>
+      </div>
     </div>
   </div>
   <hr style="width:100%" align="left">
@@ -98,11 +94,6 @@
     <button class="btn btn-default" (click)="submitted=false">Edit</button>
   </div>
 </div>
-<style type="text/css">
-.dropdown-toggle:focus + .dropdown-menu {
-    display: block;
-}
-</style>
 </body>
 </html>
 
