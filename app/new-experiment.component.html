@@ -1,6 +1,12 @@
-
-<div class="container">
-  <div  [hidden]="submitted">
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <title></title>
+</head>
+<body>
+  <div class="container">
+  <div [hidden]="submitted">
     <h1>Create new experiment</h1>
     <form *ngIf="active" (ngSubmit)="onSubmit()" #experimentForm="ngForm">
 
@@ -45,19 +51,30 @@
       </div><br>
       
   <button type="button" (click)="addExperimentgroup()">Add Experiment group</button><br><br>
-  <div *ngFor="let exp of experimentgroups">
-    <hr style="width:40%" align="left">
+  <div *ngFor="let exp of experimentgroups" class="form-group">
+    <hr style="width:100%" align="left">
     <b>Name: </b>
     <input type="text" id="{{exp.id}}" #name placeholder="Enter experiment group"><br><br>
     <b>Configurations: </b> <button type="button" (click)="addConf(name.id)">Add configuration</button><br><br>
     <div *ngFor="let conf of exp.configurations">
       <b>Key</b>
       <input type="text" id="{{exp.id}}_{{conf.id}}_key">
+      <b></b>
+      <div class="dropdown">
+        <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">Type for the value
+        <span class="caret"></span></button>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="#" id="{{exp.id}}_{{conf.id}}_type_int">Integer</a></li>
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="#" id="{{exp.id}}_{{conf.id}}_type_double">Double</a></li>
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="#" id="{{exp.id}}_{{conf.id}}_type_boolean">Boolean</a></li>
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="#" id="{{exp.id}}_{{conf.id}}_type_string">String</a></li>
+        </ul>
+      </div>
       <b>Value</b>
       <input type="text" id="{{exp.id}}_{{conf.id}}_value"> <br><br>
     </div>
   </div>
-  <hr style="width:40%" align="left">
+  <hr style="width:100%" align="left">
     <button type="submit" class="btn btn-default" [disabled]="!experimentForm.form.valid">Submit</button>
     </form>
     
@@ -81,16 +98,11 @@
     <button class="btn btn-default" (click)="submitted=false">Edit</button>
   </div>
 </div>
-
-
-
-<hr>
-<style>
-  .no-style .ng-valid {
-  border-left: 1px  solid #CCC
-}
-
-  .no-style .ng-invalid {
-  border-left: 1px  solid #CCC
+<style type="text/css">
+.dropdown-toggle:focus + .dropdown-menu {
+    display: block;
 }
 </style>
+</body>
+</html>
+
