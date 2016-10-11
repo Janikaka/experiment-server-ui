@@ -22,14 +22,13 @@ const CreateApplication = withRouter(
       let instance = axios.create({
         timeout: 1000,
         headers: {
-          'Access-Control-Allow-Origin': '*',
           'Content-Type': 'application/json'
         }
       });
 
       instance
         // .get("http://experiment-server2016.heroku.com/applications")
-        .get("http://experiment-server2016.heroku.com/applications", {name: this.state.applicationName})
+        .post("http://localhost:6543/applications", {name: this.state.applicationName})
         .then(function(result) {
           console.log(result);
         }).catch(function (response) {
