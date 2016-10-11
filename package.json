@@ -1,38 +1,69 @@
 {
-  "name": "angular2-quickstart",
+  "name": "experiment-server-react-ui",
   "version": "1.0.0",
+  "author": {
+    "name": "Jacques Marais"
+  },
+  "description": "Experiment Server Web Interface",
+  "main": "index.js",
   "scripts": {
-    "start": "tsc && concurrently \"npm run tsc:w\" \"npm run lite\" ",
-    "lite": "lite-server",
-    "postinstall": "typings install",
-    "tsc": "tsc",
-    "tsc:w": "tsc -w",
-    "typings": "typings"
+    "test:lint": "eslint . --ext .js --ext .jsx --cache || true",
+    "start": "webpack-dev-server --hot --inline --progress --colors",
+    "build": "webpack --progress --colors"
   },
-  "license": "ISC",
-  "dependencies": {
-    "@angular/common": "2.0.0-rc.4",
-    "@angular/compiler": "2.0.0-rc.4",
-    "@angular/core": "2.0.0-rc.4",
-    "@angular/forms": "0.2.0",
-    "@angular/http": "2.0.0-rc.4",
-    "@angular/platform-browser": "2.0.0-rc.4",
-    "@angular/platform-browser-dynamic": "2.0.0-rc.4",
-    "@angular/router": "3.0.0-beta.1",
-    "@angular/router-deprecated": "2.0.0-rc.2",
-    "@angular/upgrade": "2.0.0-rc.4",
-    "systemjs": "0.19.27",
-    "core-js": "^2.4.0",
-    "reflect-metadata": "^0.1.3",
-    "rxjs": "5.0.0-beta.6",
-    "zone.js": "^0.6.12",
-    "angular2-in-memory-web-api": "0.0.14",
-    "bootstrap": "^3.3.6"
+  "repository": {
+    "type": "git",
+    "url": ""
   },
+  "keywords": [
+    "React",
+    "webpack",
+    "Redux",
+    "Bable",
+    "ES6"
+  ],
+  "homepage": "",
   "devDependencies": {
-    "concurrently": "^2.0.0",
-    "lite-server": "^2.2.0",
-    "typescript": "^1.8.10",
-    "typings":"^1.0.4"
+    "babel-core": "*",
+    "babel-eslint": "*",
+    "babel-loader": "*",
+    "babel-plugin-transform-runtime": "*",
+    "babel-preset-es2015": "*",
+    "babel-preset-react": "*",
+    "babel-preset-stage-1": "*",
+    "babel-runtime": "*",
+    "css-loader": "*",
+    "eslint": "*",
+    "eslint-loader": "*",
+    "eslint-plugin-react": "*",
+    "file-loader": "*",
+    "style-loader": "*",
+    "webpack": "*",
+    "webpack-dev-server": "*",
+    "webpack-hot-middleware": "*"
+  },
+  "dependencies": {
+    "axios": "^0.14.0",
+    "babel-polyfill": "^6.13.0",
+    "classnames": "*",
+    "fbjs": "*",
+    "flexboxgrid": "*",
+    "jquery": "*",
+    "jquery-ui": "*",
+    "material-ui": "*",
+    "moment": "*",
+    "ramda": "^0.22.1",
+    "react": "*",
+    "react-addons-create-fragment": "*",
+    "react-addons-pure-render-mixin": "*",
+    "react-addons-transition-group": "*",
+    "react-addons-update": "*",
+    "react-dom": "*",
+    "react-flexbox-grid": "*",
+    "react-hot-loader": "*",
+    "react-redux": "*",
+    "react-router": "^2.8.0",
+    "react-tap-event-plugin": "*",
+    "redux": "*"
   }
 }
