@@ -18,10 +18,11 @@ module.exports = {
       { test: /\.css$/, loader: "file?name=[name].[ext]", exclude: /flexboxgrid/},
       { test: /\.jsx?$/, exclude: /node_modules/, loaders: ["react-hot","babel-loader"]},
       { test: /\.css$/, loader: 'style!css?modules', include: /flexboxgrid/},
+      { test: /\.json$/, loader: "json-loader" }
     ],
   },
   resolve: {
-    extensions: ['', '.js', '.jsx']
+    extensions: ['', '.js', '.jsx', '.json', '.webpack.js', '.web.js']
   },
   eslint: {
     configFile: './.eslintrc'
@@ -31,7 +32,7 @@ module.exports = {
     contentBase: './',
     headers: {
       "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Methods": "GET",
+      "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE",
       "Access-Control-Allow-Headers": "X-Requested-With, content-type, Authorization"
     }
   }
