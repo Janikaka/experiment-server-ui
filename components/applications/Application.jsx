@@ -24,15 +24,9 @@ const Application = React.createClass({
 
       let _this = this;
 
-      let config = {
-        headers: {
-          'Access-Control-Allow-Origin': '*'
-        }
-      };
-
       this.serverRequest =
         axios
-          .delete( "http://127.0.0.1:6543/applications/" + this.props.id, config)
+          .delete( "http://127.0.0.1:6543/applications/" + this.props.id)
           .then(function(result) {
             this.props.deleteApplication(this.props.id)
           });
