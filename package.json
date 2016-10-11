@@ -64,6 +64,8 @@
     "react-redux": "*",
     "react-router": "^2.8.0",
     "react-tap-event-plugin": "*",
-    "redux": "*"
+    "redux": "*",
+    "request": "^2.75.0",
+    "request-promise": "^4.1.1"
   }
 }
