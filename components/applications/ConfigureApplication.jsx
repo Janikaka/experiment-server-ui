@@ -27,7 +27,7 @@ const CreateApplication =
 
       this.serverRequest =
         axios
-          .get("https://experiment-server2016.herokuapp.com/applications" + this.props.params.id)
+          .get("https://experiment-server2016.herokuapp.com/applications/" + this.props.params.id)
           .then(function(result) {
             _this.setState({
               applicationName: result.data.name
