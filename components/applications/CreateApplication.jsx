@@ -27,8 +27,7 @@ const CreateApplication = withRouter(
       });
 
       instance
-        // .get("http://experiment-server2016.heroku.com/applications")
-        .post("http://localhost:6543/applications", {name: this.state.applicationName})
+        .post("https://experiment-server2016.herokuapp.com/applications", {name: this.state.applicationName})
         .then(function(result) {
           console.log(result);
         }).catch(function (response) {

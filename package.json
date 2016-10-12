@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/TheSoftwareFactory/experiment-server-ui"
   },
   "keywords": [
     "React",
@@ -54,7 +54,7 @@
     "json-loader": "^0.5.4",
     "material-ui": "*",
     "moment": "*",
-    "ramda": "^0.22.1",
+    "ramda": "0.22.1",
     "react": "*",
     "react-addons-create-fragment": "*",
     "react-addons-pure-render-mixin": "*",
@@ -64,10 +64,13 @@
     "react-flexbox-grid": "*",
     "react-hot-loader": "*",
     "react-redux": "*",
-    "react-router": "^2.8.0",
+    "react-router": "2.8.0",
     "react-tap-event-plugin": "*",
     "redux": "*",
-    "request": "^2.75.0",
-    "request-promise": "^4.1.1"
+    "request": "2.75.0",
+    "request-promise": "4.1.1"
+  },
+  "engines": {
+    "node": "6.6.0"
   }
 }

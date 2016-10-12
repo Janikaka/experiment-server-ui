@@ -22,7 +22,7 @@ const Applications = withRouter(
 
       this.serverRequest =
         axios
-          .get("http://localhost:6543/applications")
+          .get("https://experiment-server2016.herokuapp.com/applications")
           .then(function(result) {
 
             _this.setState({

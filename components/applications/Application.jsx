@@ -26,7 +26,7 @@ const Application = React.createClass({
 
       this.serverRequest =
         axios
-          .delete( "http://127.0.0.1:6543/applications/" + this.props.id)
+          .delete( "https://experiment-server2016.herokuapp.com/applications/" + this.props.id)
           .then(function(result) {
             this.props.deleteApplication(this.props.id)
           });

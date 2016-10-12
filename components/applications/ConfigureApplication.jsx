@@ -27,7 +27,7 @@ const CreateApplication =
 
       this.serverRequest =
         axios
-          .get("http://localhost:6543/applications/" + this.props.params.id)
+          .get("https://experiment-server2016.herokuapp.com/applications" + this.props.params.id)
           .then(function(result) {
             _this.setState({
               applicationName: result.data.name
@@ -36,7 +36,7 @@ const CreateApplication =
 
       this.serverRequest =
         axios
-          .get("http://localhost:6543/operators")
+          .get("https://experiment-server2016.herokuapp.com/operators")
           .then(function(result) {
             _this.setState({
               operators: result.data
@@ -45,7 +45,7 @@ const CreateApplication =
 
       this.serverRequest =
         axios
-          .get("http://localhost:6543/applications/"
+          .get("https://experiment-server2016.herokuapp.com/applications/"
               + this.props.params.id + "/configurationkeys")
           .then(function(result) {
 
@@ -55,7 +55,7 @@ const CreateApplication =
 
             result.data.map(function(configurationkey) {
                 axios
-                  .get("http://localhost:6543/configurationkeys/" + configurationkey.id + "/rangeconstraints")
+                  .get("https://experiment-server2016.herokuapp.com/configurationkeys/" + configurationkey.id + "/rangeconstraints")
                   .then(function(result) {
                     _this.setState({
                       rangeConstraints: _this.state.rangeConstraints.concat(result.data)
