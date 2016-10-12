@@ -22,7 +22,7 @@
     "Bable",
     "ES6"
   ],
-  "homepage": "",
+  "homepage": "https://experiment-server-ui.herokuapp.com/",
   "devDependencies": {
     "babel-core": "*",
     "babel-eslint": "*",
