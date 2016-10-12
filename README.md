@@ -1,5 +1,6 @@
 # experiment-server-react-ui
-Experiment Server Web UI - Built with React, React-Router, Axios, Ramda and Material-UI
+Experiment Server Web UI - Built with React, React-Router, Axios, Ramda and Material-UI.
+Live version available [here](https://experiment-server-ui.herokuapp.com).
 
 ## Installation
 `npm install`
