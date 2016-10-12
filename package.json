@@ -8,8 +8,10 @@
   "main": "index.js",
   "scripts": {
     "test:lint": "eslint . --ext .js --ext .jsx --cache || true",
-    "start": "webpack-dev-server --hot --inline --progress --colors",
-    "build": "webpack --progress --colors"
+    "start-local": "webpack-dev-server --hot --inline --progress --colors",
+    "build": "webpack --progress --colors",
+    "start": "node src/server.js",
+    "postinstall": "webpack -p --config webpack.config.js"
   },
   "repository": {
     "type": "git",
@@ -48,6 +50,7 @@
     "axios": "^0.14.0",
     "babel-polyfill": "^6.13.0",
     "classnames": "*",
+    "express": "4.14.0",
     "fbjs": "*",
     "flexboxgrid": "*",
     "jquery": "*",
@@ -55,6 +58,7 @@
     "json-loader": "^0.5.4",
     "material-ui": "*",
     "moment": "*",
+    "path": "0.12.7",
     "ramda": "0.22.1",
     "react": "*",
     "react-addons-create-fragment": "*",
@@ -65,7 +69,7 @@
     "react-flexbox-grid": "*",
     "react-hot-loader": "*",
     "react-redux": "*",
-    "react-router": "2.8.0",
+    "react-router": "2.8.1",
     "react-tap-event-plugin": "*",
     "redux": "*",
     "request": "2.75.0",
