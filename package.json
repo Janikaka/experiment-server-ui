@@ -41,7 +41,8 @@
     "style-loader": "*",
     "webpack": "*",
     "webpack-dev-server": "*",
-    "webpack-hot-middleware": "*"
+    "webpack-hot-middleware": "*",
+    "shrinkwrap": "0.4.0"
   },
   "dependencies": {
     "axios": "^0.14.0",
