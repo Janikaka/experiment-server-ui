@@ -10,7 +10,7 @@
     "test:lint": "eslint . --ext .js --ext .jsx --cache || true",
     "start-local": "webpack-dev-server --hot --inline --progress --colors",
     "build": "webpack --progress --colors",
-    "start": "node src/server.js",
+    "start": "node server.js",
     "postinstall": "webpack -p --config webpack.config.js"
   },
   "repository": {

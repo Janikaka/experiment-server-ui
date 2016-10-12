@@ -7,6 +7,7 @@ module.exports = {
   },
   output: {
     path: __dirname + "/static",
+    publicPath: '/',
     filename: "bundle.js"
   },
   module: {
@@ -29,7 +30,7 @@ module.exports = {
   },
   devServer: {
     historyApiFallback: true,
-    contentBase: './',
+    contentBase: './static',
     port: process.env.PORT || 8080
   }
 };
