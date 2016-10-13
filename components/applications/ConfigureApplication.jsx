@@ -15,6 +15,7 @@ const CreateApplication =
     getInitialState() {
       return {
         applicationName: "",
+        applicationId: null,
         configurationKeys: [],
         rangeConstraints: [],
         exclusionConstraints: [],
@@ -30,7 +31,8 @@ const CreateApplication =
           .get("https://experiment-server2016.herokuapp.com/applications/" + this.props.params.id)
           .then(function(result) {
             _this.setState({
-              applicationName: result.data.name
+              applicationName: result.data.name,
+              applicationId: result.data.id
             });
           });
 
@@ -105,6 +107,8 @@ const CreateApplication =
         float: "right"
       };
 
+      let _this = this
+
       return (
         <Grid>
           <Row>
@@ -145,6 +149,7 @@ const CreateApplication =
                              keyId={configurationkey.id}
                              keyName={configurationkey.name}
                              keyType={configurationkey.type}
+                             appId={_this.state.applicationId}
                              />
                       })
                     }
