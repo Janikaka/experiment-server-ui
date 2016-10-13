@@ -79,6 +79,21 @@ const CreateApplication =
       this.setState({exclusionConstraints: this.state.exclusionConstraints.concat(<CreateExclusionConstraint key={this.state.exclusionConstraints.length} />)})
     },
 
+    deleteAllConfigurationKeys() {
+      let _this = this;
+      const appId = this.state.applicationId
+
+      this.serverRequest =
+        axios
+          .delete(`https://experiment-server2016.herokuapp.com/applications/${appId}/configurationkeys`)
+          .then(function(result) {
+            console.log(result)
+          })
+          .catch(function(err) {
+            console.err(err)
+          })
+    },
+
     render() {
 
       const paperStyle = {
@@ -155,7 +170,7 @@ const CreateApplication =
                     }
 
                     <br />
-                    <RaisedButton label="Remove All Configuration Keys" style={buttonStyle} fullWidth={true}/>
+                    <RaisedButton label="Remove All Configuration Keys" onTouchTap={this.deleteAllConfigurationKeys} style={buttonStyle} fullWidth={true}/>
 
                   </Col>
                 </Row>
