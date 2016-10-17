@@ -28,13 +28,13 @@ const CreateApplication = withRouter(
 
       instance
         .post("https://experiment-server2016.herokuapp.com/applications", {name: this.state.applicationName})
+        // .post("http://localhost:6543/applications", {name: this.state.applicationName})
         .then(function(result) {
           console.log(result);
+          _this.props.router.replace('/applications')
         }).catch(function (response) {
           console.log(response);
         });
-
-      this.props.router.replace('/configureapplication')
     },
 
     render() {

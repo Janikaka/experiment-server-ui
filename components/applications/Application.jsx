@@ -1,11 +1,12 @@
 import React from "react";
-import {Link} from 'react-router'
+import {Link, withRouter} from 'react-router'
 import {Paper, FlatButton, RaisedButton, Dialog} from 'material-ui';
 import {Grid, Row, Col} from 'react-flexbox-grid/lib/index';
 
 import axios from 'axios';
 
-const Application = React.createClass({
+const Application = withRouter(
+  React.createClass({
 
     getInitialState() {
       return {deleteDialogOpen: false};
@@ -27,8 +28,9 @@ const Application = React.createClass({
       this.serverRequest =
         axios
           .delete( "https://experiment-server2016.herokuapp.com/applications/" + this.props.id)
+          // .delete( "http://localhost:6543/applications/" + this.props.id)
           .then(function(result) {
-            this.props.deleteApplication(this.props.id)
+            window.location.reload()
           });
     },
 
@@ -93,5 +95,6 @@ const Application = React.createClass({
       )
     }
   })
+)
 
   module.exports = Application

@@ -35,7 +35,7 @@ const CreateConfigurationKey =
     },
 
     addConfigurationKey() {
-      let _this = this
+      let _this = this;
 
       const appId = _this.props.appId
       const keyName = _this.state.configurationKeyName
@@ -43,12 +43,14 @@ const CreateConfigurationKey =
       const keyData = {name: keyName, type: selectedValue, application_id: appId}
       this.serverRequest =
         axios
+          // .post(`http://localhost:6543/applications/${appId}/configurationkeys`, keyData)
           .post(`https://experiment-server2016.herokuapp.com/applications/${appId}/configurationkeys`, keyData)
           .then(function(result) {
             console.log(result)
+            window.location.reload() // TODO: Replace with Redux
           })
           .catch(function(err) {
-            console.err(err)
+            console.error(err)
           })
     },
 
@@ -58,12 +60,14 @@ const CreateConfigurationKey =
       const keyId = this.props.keyId
       this.serverRequest =
         axios
+          // .delete( "http://localhost:6543/configurationkeys/" + keyId)
           .delete( "https://experiment-server2016.herokuapp.com/configurationkeys/" + keyId)
           .then(function(result) {
             console.log(result)
+            window.location.reload() // TODO: Replace with Redux
           })
           .catch(function(err) {
-            console.err(err)
+            console.error(err)
           })
     },
 
@@ -121,7 +125,7 @@ const CreateConfigurationKey =
                     <RaisedButton label="Save" primary={true} style={buttonStyle} disabled={!!this.props.keyName} fullWidth={true} onTouchTap={this.addConfigurationKey}/>
                   </Col>
                   <Col xs={2}>
-                    <RaisedButton label="Delete" primary={false} style={buttonStyle} fullWidth={true} onTouchTap={this.deleteConfigurationKey}/>
+                    <RaisedButton label="Delete" primary={false} style={buttonStyle} disabled={!!!this.props.keyName} fullWidth={true} onTouchTap={this.deleteConfigurationKey}/>
                   </Col>
 
                 </Row>

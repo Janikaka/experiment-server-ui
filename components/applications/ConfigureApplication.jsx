@@ -1,5 +1,5 @@
 import React from "react";
-import {Link} from 'react-router'
+import {Link, withRouter} from 'react-router'
 import {Paper, RaisedButton, DatePicker, TextField} from 'material-ui';
 import {Grid, Row, Col} from 'react-flexbox-grid/lib/index';
 
@@ -9,7 +9,7 @@ import CreateExclusionConstraint from './CreateExclusionConstraint'
 
 import axios from "axios";
 
-const CreateApplication =
+const CreateApplication = withRouter(
   React.createClass({
 
     getInitialState() {
@@ -19,6 +19,9 @@ const CreateApplication =
         configurationKeys: [],
         rangeConstraints: [],
         exclusionConstraints: [],
+        configurationKeysNextId: 0,
+        rangeConstraintsNextId: 0,
+        exclusionConstraintsNextId: 0,
         operators: []
       }
     },
@@ -28,6 +31,7 @@ const CreateApplication =
 
       this.serverRequest =
         axios
+          // .get("http://localhost:6543/applications/" + this.props.params.id)
           .get("https://experiment-server2016.herokuapp.com/applications/" + this.props.params.id)
           .then(function(result) {
             _this.setState({
@@ -38,6 +42,7 @@ const CreateApplication =
 
       this.serverRequest =
         axios
+          // .get("http://localhost:6543/operators")
           .get("https://experiment-server2016.herokuapp.com/operators")
           .then(function(result) {
             _this.setState({
@@ -47,6 +52,7 @@ const CreateApplication =
 
       this.serverRequest =
         axios
+          // .get("http://localhost:6543/applications/"
           .get("https://experiment-server2016.herokuapp.com/applications/"
               + this.props.params.id + "/configurationkeys")
           .then(function(result) {
@@ -57,6 +63,7 @@ const CreateApplication =
 
             result.data.map(function(configurationkey) {
                 axios
+                  // .get("http://localhost:6543/configurationkeys/" + configurationkey.id + "/rangeconstraints")
                   .get("https://experiment-server2016.herokuapp.com/configurationkeys/" + configurationkey.id + "/rangeconstraints")
                   .then(function(result) {
                     _this.setState({
@@ -65,6 +72,10 @@ const CreateApplication =
                   });
             })
           });
+    },
+
+    configureApplication() {
+      this.props.router.replace('/applications');
     },
 
     addNewConfigurationKey() {
@@ -76,7 +87,7 @@ const CreateApplication =
     },
 
     addNewExclusionConstraint() {
-      this.setState({exclusionConstraints: this.state.exclusionConstraints.concat(<CreateExclusionConstraint key={this.state.exclusionConstraints.length} />)})
+      this.setState({exclusionConstraints: this.state.exclusionConstraints.concat({id:this.state.exclusionConstraints.length + 1})})
     },
 
     deleteAllConfigurationKeys() {
@@ -86,8 +97,10 @@ const CreateApplication =
       this.serverRequest =
         axios
           .delete(`https://experiment-server2016.herokuapp.com/applications/${appId}/configurationkeys`)
+          // .delete(`http://localhost:6543/applications/${appId}/configurationkeys`)
           .then(function(result) {
             console.log(result)
+            window.location.reload() // TODO: Replace with Redux
           })
           .catch(function(err) {
             console.err(err)
@@ -222,12 +235,22 @@ const CreateApplication =
               <Paper style={paperStyle} zDepth={1}>
                 <Row center="xs">
                   <Col xs={10}>
-                    <RaisedButton label="Add Exclusion Constraint" onClick={this.addNewExclusionConstraint} style={buttonStyle} fullWidth={true} disabled={true} />
+                    <RaisedButton label="Add Exclusion Constraint" onClick={this.addNewExclusionConstraint} style={buttonStyle} fullWidth={true} />
 
                     {
-                      this.state.exclusionConstraints.map(function(exclusionConstraint) {
-                        return exclusionConstraint;
-                      })
+                      this.state.exclusionConstraints.map(function(exclusionconstraint) {
+                        return <CreateExclusionConstraint
+                        key={exclusionconstraint.id}
+                        // typeAValue={exclusionconstraint}
+                        // typeBValue={exclusionconstraint}
+                        // keyAValue={exclusionconstraint}
+                        // keyBValue={exclusionconstraint}
+                        // exclusionValueA={exclusionconstraint}
+                        // exclusionValueB={exclusionconstraint}
+                        exclusionOperators={this.state.operators}
+                        configurationKeys={this.state.configurationKeys}
+                        />;
+                      }.bind(this))
                     }
 
                   </Col>
@@ -241,7 +264,7 @@ const CreateApplication =
               <Paper style={paperStyle} zDepth={1}>
                 <Row center="xs">
                   <Col xs={6}>
-                    <RaisedButton label="Configure Application" primary={true} style={buttonStyle} fullWidth={true}/>
+                    <RaisedButton label="Configure Application" onTouchTap={this.configureApplication} primary={true} style={buttonStyle} fullWidth={true}/>
                   </Col>
                 </Row>
               </Paper>
@@ -252,5 +275,6 @@ const CreateApplication =
       )
     }
   })
+)
 
 module.exports = CreateApplication
