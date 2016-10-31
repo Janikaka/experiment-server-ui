@@ -31,7 +31,6 @@ const CreateApplication = withRouter(
 
       this.serverRequest =
         axios
-          // .get("http://localhost:6543/applications/" + this.props.params.id)
           .get("https://experiment-server2016.herokuapp.com/applications/" + this.props.params.id)
           .then(function(result) {
             _this.setState({
@@ -42,7 +41,6 @@ const CreateApplication = withRouter(
 
       this.serverRequest =
         axios
-          // .get("http://localhost:6543/operators")
           .get("https://experiment-server2016.herokuapp.com/operators")
           .then(function(result) {
             _this.setState({
@@ -52,7 +50,6 @@ const CreateApplication = withRouter(
 
       this.serverRequest =
         axios
-          // .get("http://localhost:6543/applications/"
           .get("https://experiment-server2016.herokuapp.com/applications/"
               + this.props.params.id + "/configurationkeys")
           .then(function(result) {
@@ -63,7 +60,6 @@ const CreateApplication = withRouter(
 
             result.data.map(function(configurationkey) {
                 axios
-                  // .get("http://localhost:6543/configurationkeys/" + configurationkey.id + "/rangeconstraints")
                   .get("https://experiment-server2016.herokuapp.com/configurationkeys/" + configurationkey.id + "/rangeconstraints")
                   .then(function(result) {
                     _this.setState({
@@ -71,7 +67,25 @@ const CreateApplication = withRouter(
                     });
                   });
             })
+
+            axios
+              .get("https://experiment-server2016.herokuapp.com/exclusionconstraints")
+              .then(function(result) {
+
+                result.data.map(function(exclusionconstraint) {
+                  _this.state.configurationKeys.map(function(configurationkey) {
+                    if (exclusionconstraint.first_configurationkey_id === configurationkey.id) {
+                      console.log(exclusionconstraint);
+                      _this.setState({
+                        exclusionConstraints: _this.state.exclusionConstraints.concat(exclusionconstraint)
+                      });
+                    }
+                  })
+                })
+              });
           });
+
+
     },
 
     configureApplication() {
@@ -97,7 +111,6 @@ const CreateApplication = withRouter(
       this.serverRequest =
         axios
           .delete(`https://experiment-server2016.herokuapp.com/applications/${appId}/configurationkeys`)
-          // .delete(`http://localhost:6543/applications/${appId}/configurationkeys`)
           .then(function(result) {
             console.log(result)
             window.location.reload() // TODO: Replace with Redux
@@ -241,12 +254,14 @@ const CreateApplication = withRouter(
                       this.state.exclusionConstraints.map(function(exclusionconstraint) {
                         return <CreateExclusionConstraint
                         key={exclusionconstraint.id}
-                        // typeAValue={exclusionconstraint}
-                        // typeBValue={exclusionconstraint}
-                        // keyAValue={exclusionconstraint}
-                        // keyBValue={exclusionconstraint}
-                        // exclusionValueA={exclusionconstraint}
-                        // exclusionValueB={exclusionconstraint}
+                        id={exclusionconstraint.id}
+                        appId={this.props.params.id}
+                        keyAId={exclusionconstraint.first_configurationkey_id}
+                        keyBId={exclusionconstraint.second_configurationkey_id}
+                        typeAValue={exclusionconstraint.first_operator_id}
+                        typeBValue={exclusionconstraint.second_operator_id}
+                        keyAValue={exclusionconstraint.first_value_a}
+                        keyBValue={exclusionconstraint.second_value_a}
                         exclusionOperators={this.state.operators}
                         configurationKeys={this.state.configurationKeys}
                         />;

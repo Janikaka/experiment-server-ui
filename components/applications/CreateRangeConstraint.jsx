@@ -29,11 +29,11 @@ const CreateRangeConstraint =
     addNewRangeConstraint() {
       let _this = this;
 
-      const keyData = {configurationkey_id: this.state.selectedKeyValue, operator_id: this.state.selectedTypeValue, value: parseInt(this.state.rangeValue)}
+      const keyData = {configurationkey_id: this.state.selectedKeyValue, operator_id: this.state.selectedTypeValue, value: this.state.rangeValue}
       this.serverRequest =
         axios
           // .post(`http://localhost:6543/configurationkeys/${this.state.selectedKeyValue}/rangeconstraints`, keyData)
-          .post('https://experiment-server2016.herokuapp.com/configurationkeys/${this.state.selectedKeyValue}/rangeconstraints', keyData)
+          .post("https://experiment-server2016.herokuapp.com/configurationkeys/" + _this.state.selectedKeyValue + "/rangeconstraints", keyData)
           .then(function(result) {
             console.log(result)
             window.location.reload() // TODO: Replace with Redux
@@ -48,8 +48,8 @@ const CreateRangeConstraint =
 
       this.serverRequest =
         axios
-          .delete( "http://localhost:6543/rangeconstraints/" + this.props.rangeId)
-          // .delete( "https://experiment-server2016.herokuapp.com/rangeconstraints/" + this.props.rangeId)
+          //.delete( "http://localhost:6543/rangeconstraints/" + this.props.rangeId)
+          .delete( "https://experiment-server2016.herokuapp.com/rangeconstraints/" + this.props.rangeId)
           .then(function(result) {
             console.log(result)
             window.location.reload() // TODO: Replace with Redux
@@ -126,7 +126,7 @@ const CreateRangeConstraint =
                   </Col>
 
                   <Col xs={3}>
-                    <TextField hintText="Value" floatingLabelText="Value" value={this.props.rangeValue} onChange={this.handleValueChange} disabled={!!this.props.rangeConfigurationKeyId} fullWidth={true}/>
+                    <TextField hintText="Value" floatingLabelText="Value" value={this.state.rangeValue} onChange={this.handleValueChange} disabled={!!this.props.rangeConfigurationKeyId} fullWidth={true}/>
                   </Col>
 
                   <Col xs={1}>

@@ -9,7 +9,7 @@ const CreateConfigurationKey =
   React.createClass({
 
     getInitialState() {
-      return {selectedValue: 1, configurationKeyName: ''};
+      return {selectedValue: this.selectedAPIValueToValue(this.props.keyType), configurationKeyName: this.props.keyName};
     },
 
     handleSelection(event, index, value) {
@@ -34,12 +34,27 @@ const CreateConfigurationKey =
       }
     },
 
+    selectedAPIValueToValue(typeId) {
+      switch (typeId) {
+        case 'integer':
+          return 1
+        case 'double':
+          return 2
+        case 'boolean':
+          return 3
+        case 'string':
+          return 4
+
+      }
+    },
+
     addConfigurationKey() {
       let _this = this;
 
       const appId = _this.props.appId
       const keyName = _this.state.configurationKeyName
       const selectedValue = this.selectedValueToAPIValue(_this.state.selectedValue)
+      console.log(selectedValue);
       const keyData = {name: keyName, type: selectedValue, application_id: appId}
       this.serverRequest =
         axios
@@ -109,7 +124,7 @@ const CreateConfigurationKey =
                 <Row center="xs" middle="xs">
 
                   <Col xs={6}>
-                    <TextField hintText="Key" floatingLabelText="Key" onChange={this.configurationKeyNameDidChange} value={this.props.keyName} disabled={!!this.props.keyName} fullWidth={true}/>
+                    <TextField hintText="Key" floatingLabelText="Key" onChange={this.configurationKeyNameDidChange} value={this.state.configurationKeyName} disabled={!!this.props.keyName} fullWidth={true}/>
                   </Col>
 
                   <Col xs={3}>
